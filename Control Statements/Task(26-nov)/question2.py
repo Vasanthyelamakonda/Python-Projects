@@ -1,0 +1,16 @@
+import sqlite3 as sql
+con=sql.connect('Amazon')
+print('Connection Established')
+cur=con.cursor()
+q = 'insert into product values(?,?,?,?,?)'
+pid=int(input('Enter Product ID :'))
+pname = input('Enter Product Name :')
+cost= float(input('Enter Product Cost :'))
+availability = int(input('Enter Availability :'))
+Expdate = input('Enter Expiry Date:')
+t1=(pid,pname,cost,availability,Expdate)
+cur.execute(q,t1)
+con.commit()
+print('Data Inserted')
+con.close()
+print('Connection Closed')
